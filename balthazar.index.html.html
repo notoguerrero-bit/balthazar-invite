@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balthazar's Birthday RSVP</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #0a0a0a 60%, #111 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #39ff14;
+      text-shadow: 0 0 10px #39ff14;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+      margin-top: 0;
+    }
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 1.5rem;
+      max-width: 400px;
+      margin: 2rem auto;
+      box-shadow: 0 0 20px #39ff14;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    input, textarea {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #ccc;
+    }
+    button {
+      background: linear-gradient(90deg, #39ff14, #00ffff);
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #39ff14;
+    }
+    .details {
+      margin-top: 1rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Balthazar's Birthday 🎂</h1>
+  <h2>November 15 · 4:00–7:00 PM</h2>
+  <p>📍 Our House: 5040 Wittenmayer Court, Antioch</p>
+  <p>We can’t wait to see you! Please confirm your attendance below.</p>
+
+  <form id="rsvpForm">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="number" id="guests" placeholder="Number of Guests" min="1" required />
+    <textarea id="comments" placeholder="Comments or dietary restrictions (optional)"></textarea>
+    <button type="submit">Send RSVP via WhatsApp</button>
+  </form>
+
+  <div class="details">
+    <p>Messages will be sent to WhatsApp: +1 (408) 825-3681</p>
+  </div>
+
+  <script>
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const guests = encodeURIComponent(document.getElementById('guests').value);
+      const comments = encodeURIComponent(document.getElementById('comments').value);
+      const message = `Hello! I confirm my attendance to Balthazar's Birthday. My name is ${name}, we will be ${guests} people. ${comments ? 'Notes: ' + comments : ''}`;
+      const whatsappURL = `https://wa.me/14088253681?text=${message}`;
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+</body>
+</html>
